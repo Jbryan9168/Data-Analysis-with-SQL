@@ -1,0 +1,11 @@
+Select lastname,firstname,orders.orderid,products.productid,quantity,price,sum(quantity*price) as SalesAmount
+from employees
+inner join orders
+on employees.employeeid = orders.employeeid
+inner join orderdetails
+on orders.orderid = orderdetails.orderid
+inner join products
+on orderdetails.productid = products.productid
+group by orders.orderid
+order by salesamount desc
+limit 5
